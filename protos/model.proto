@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service PredictionService {
+  rpc Predict (PredictRequest) returns (PredictResponse);
+  rpc Health (Empty) returns (HealthResponse);
+}
+
+message PredictRequest {
+  float feature1 = 1;
+  float feature2 = 2;
+}
+
+message PredictResponse {
+  string prediction = 1;
+  string proba = 2;
+}
+
+message Empty {}
+
+message HealthResponse {
+  string status = 1;
+  string model_version = 2;
+}
